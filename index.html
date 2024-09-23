@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width:90vw;
+            height:90vh;
+            background-color: rgb(156, 154, 154);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            width:500px;
+            height:fit-content;
+            box-shadow: 0 3px 5px black;
+            text-align: center;
+            padding-bottom: 2px;
+            border-radius: 5px;
+            background-color: rgb(239, 236, 236);
+        }
+        #quote{
+            font-size: 1.5em;
+            font-weight: 500;
+            font-style: italic;
+        }
+        #author{
+            font-size: 1em;
+            font-style: oblique;
+        }
+        #btn{
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: rgb(113, 113, 226);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p id="quote">Click here to generate</p>
+        <p id="author"></p>
+        <div class="btn">
+            <button id="btn">generate</button>
+        </div>
+    </div>
+
+    <script>
+        var quote = document.getElementById("quote");
+        var author = document.getElementById("author");
+        var btn = document.getElementById("btn");
+        var container = document.getElementsByClassName("container")[0];
+
+        let data = [
+            {
+                "id": 3,
+                "quote": "Thinking is the capital, Enterprise is the way, Hard Work is the solution.",
+                "author": "Abdul Kalam"
+            },
+            {
+                "id": 4,
+                "quote": "If You Can't Make It Good, At Least Make It Look Good.",
+                "author": "Bill Gates"
+            },
+            {
+                "id": 5,
+                "quote": "Heart be brave. If you cannot be brave, just go. Love's glory is not a small thing.",
+                "author": "Rumi"
+            },
+            {
+                "id": 6,
+                "quote": "It is bad for a young man to sin; but it is worse for an old man to sin.",
+                "author": "Abu Bakr (R.A)"
+            },
+            {
+                "id": 7,
+                "quote": "If You Are Out To Describe The Truth, Leave Elegance To The Tailor.",
+                "author": "Albert Einstein"
+            }
+        ];
+
+        var colors = ["green", "yellow", "orange", "grey", "blue"];
+        var colors1 = ["yellow", "green", "blue", "orange", "grey"];
+        var index = 0;
+
+        function generate() {
+            quote.innerText = `${data[index]["quote"]}`;
+            author.innerText = `${data[index]["author"]}`;
+            container.style.backgroundColor = colors[index % colors.length];
+            btn.style.backgroundColor = colors1[index % colors1.length];
+            index++;
+            if (index >= data.length) {
+                index = 0;
+            }
+        }
+
+        btn.addEventListener("click", generate);
+    </script>
+</body>
+</html>
